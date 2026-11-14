@@ -29,6 +29,7 @@ import { AnimeCard } from '@/src/components/AnimeCard';
 import { LibraryStatusTrigger } from '@/src/components/LibraryStatusTrigger';
 import { MediaCarousel } from '@/src/components/MediaCarousel';
 import { AvatarBadge, formatTimeSec } from '@/src/components/BrandMark';
+import { AniListMark, MyAnimeListMark } from '@/src/components/TrackerMarks';
 
 const TIMEFRAMES: { key: TimeframeKey; labelKey: string }[] = [
   { key: 'today', labelKey: 'home.today' },
@@ -442,7 +443,7 @@ export const HomePage: React.FC = () => {
                   aria-pressed={animeSource === 'mal'}
                   onClick={() => setAnimeSource('mal')}
                 >
-                  <span className="tracker-mark tracker-mark--mal">MAL</span>
+                  <MyAnimeListMark size={20} />
                   <span>MAL</span>
                 </button>
                 <button
@@ -451,7 +452,7 @@ export const HomePage: React.FC = () => {
                   aria-pressed={animeSource === 'anilist'}
                   onClick={() => setAnimeSource('anilist')}
                 >
-                  <span className="tracker-mark tracker-mark--anilist">AL</span>
+                  <AniListMark size={20} />
                   <span>AniList</span>
                 </button>
               </div>
@@ -510,7 +511,7 @@ export const HomePage: React.FC = () => {
                   aria-pressed={movieSource === 'mal'}
                   onClick={() => setMovieSource('mal')}
                 >
-                  <span className="tracker-mark tracker-mark--mal">MAL</span>
+                  <MyAnimeListMark size={20} />
                   <span>MAL</span>
                 </button>
                 <button
@@ -519,7 +520,7 @@ export const HomePage: React.FC = () => {
                   aria-pressed={movieSource === 'anilist'}
                   onClick={() => setMovieSource('anilist')}
                 >
-                  <span className="tracker-mark tracker-mark--anilist">AL</span>
+                  <AniListMark size={20} />
                   <span>AniList</span>
                 </button>
               </div>
@@ -576,7 +577,7 @@ export const HomePage: React.FC = () => {
                   aria-pressed={genreSource === 'mal'}
                   onClick={() => setGenreSource('mal')}
                 >
-                  <span className="tracker-mark tracker-mark--mal">MAL</span>
+                  <MyAnimeListMark size={20} />
                   <span>MAL</span>
                 </button>
                 <button
@@ -585,7 +586,7 @@ export const HomePage: React.FC = () => {
                   aria-pressed={genreSource === 'anilist'}
                   onClick={() => setGenreSource('anilist')}
                 >
-                  <span className="tracker-mark tracker-mark--anilist">AL</span>
+                  <AniListMark size={20} />
                   <span>AniList</span>
                 </button>
               </div>

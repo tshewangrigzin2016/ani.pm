@@ -762,8 +762,11 @@
 .ytw-ab-icon-btn {
   display: grid;
   place-items: center;
+  flex: 0 0 34px;
   width: 34px;
   height: 34px;
+  aspect-ratio: 1 / 1;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
@@ -1485,6 +1488,7 @@
   flex: 0 0 auto;
   width: auto;
   height: 34px;
+  aspect-ratio: auto;
   padding: 0 14px;
   border-radius: 999px;
   gap: 6px;
@@ -1529,3 +1533,50 @@
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7);
   color: #ffffff;
 }
+
+.ep-num-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  gap: 8px;
+}
+
+.ep-num-grid--panel {
+  max-height: 540px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.ep-num-grid--detail {
+  grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  margin-top: 14px;
+}
+
+.ep-num-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ep-num-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.ep-num-btn.is-active {
+  background: #ffffff;
+  color: #09090b;
+  border-color: #ffffff;
+}
+

@@ -332,8 +332,12 @@
 
 .spot .btn-ghost,
 .hero-library-status-trigger {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 48px;
   width: 48px;
   height: 48px;
+  aspect-ratio: 1 / 1;
   padding: 0;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -364,8 +368,11 @@
 
 .spot-nav .spot-nav-btn {
   pointer-events: auto;
+  flex: 0 0 48px;
   width: 48px;
   height: 48px;
+  aspect-ratio: 1 / 1;
+  padding: 0;
   display: grid;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -647,10 +654,11 @@
 
 .tracker-mark {
   display: grid;
+  flex-shrink: 0;
   place-items: center;
   width: 20px;
   height: 20px;
-  border-radius: 6px;
+  border-radius: 5px;
   font-size: 9px;
   font-weight: 800;
 }
@@ -661,8 +669,8 @@
 }
 
 .tracker-mark--anilist {
-  background: #02a9ff;
-  color: #0b1622;
+  background: #2b2d42;
+  color: #ffffff;
 }
 
 .row-view-all {
@@ -1091,6 +1099,7 @@
   }
   .spot .btn-ghost,
   .hero-library-status-trigger {
+    flex: 0 0 42px;
     width: 42px;
     height: 42px;
   }
@@ -1107,6 +1116,7 @@
     left: 14px;
   }
   .spot-nav .spot-nav-btn {
+    flex: 0 0 40px;
     width: 40px;
     height: 40px;
   }

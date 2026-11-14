@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Keyboard, Mail, X } from 'lucide-react';
 import { useApp } from '@/src/context/AppContext';
 import type { AuthProvider } from '@/src/types/user';
+import { AniListMark, MyAnimeListMark } from './TrackerMarks';
 
 export const AuthModal: React.FC = () => {
   const { authOpen, setAuthOpen, signIn } = useApp();
@@ -47,30 +48,12 @@ export const AuthModal: React.FC = () => {
     {
       id: 'anilist',
       label: 'Continue with AniList',
-      icon: (
-        <span style={{ fontSize: 11, fontWeight: 800, color: '#38bdf8' }}>AL</span>
-      ),
+      icon: <AniListMark size={18} />,
     },
     {
       id: 'myanimelist',
       label: 'Continue with MyAnimeList',
-      icon: (
-        <span
-          style={{
-            display: 'inline-grid',
-            placeItems: 'center',
-            width: 18,
-            height: 18,
-            borderRadius: 4,
-            background: '#2e51a2',
-            color: '#fff',
-            fontSize: 7.5,
-            fontWeight: 800,
-          }}
-        >
-          MAL
-        </span>
-      ),
+      icon: <MyAnimeListMark size={18} />,
     },
   ];
 

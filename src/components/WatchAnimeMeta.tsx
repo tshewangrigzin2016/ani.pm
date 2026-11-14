@@ -19,6 +19,7 @@ import type { AnimeTitle } from '@/src/types/anime';
 import type { WatchOrderItem } from '@/src/utils/watchRelations';
 import { useApp } from '@/src/context/AppContext';
 import { LibraryStatusTrigger } from './LibraryStatusTrigger';
+import { AniListMark, MyAnimeListMark } from './TrackerMarks';
 
 interface WatchAnimeMetaProps {
   anime: AnimeTitle;
@@ -88,9 +89,7 @@ export const WatchAnimeMeta: React.FC<WatchAnimeMetaProps> = ({ anime, watchOrde
             rel="noreferrer"
             className="ytw-ab-ext-btn"
           >
-            <span className="tracker-mark tracker-mark--anilist" style={{ width: 20, height: 18, fontSize: 8.5 }}>
-              AL
-            </span>
+            <AniListMark size={20} />
             <span>AniList</span>
           </a>
 
@@ -100,9 +99,7 @@ export const WatchAnimeMeta: React.FC<WatchAnimeMetaProps> = ({ anime, watchOrde
             rel="noreferrer"
             className="ytw-ab-ext-btn"
           >
-            <span className="tracker-mark tracker-mark--mal" style={{ width: 24, height: 18, fontSize: 8 }}>
-              MAL
-            </span>
+            <MyAnimeListMark size={20} />
             <span>MAL</span>
           </a>
 

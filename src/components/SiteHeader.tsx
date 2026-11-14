@@ -32,10 +32,21 @@ import { AvatarBadge, BrandFooterLockup, BrandMark } from './BrandMark';
 
 interface SiteHeaderProps {
   scrolled: boolean;
+  hidden: boolean;
   overArt: boolean;
+  pinnedOpen: boolean;
+  onTogglePin: () => void;
+  onMenuOpenChange?: (open: boolean) => void;
 }
 
-export const SiteHeader: React.FC<SiteHeaderProps> = ({ scrolled, overArt }) => {
+export const SiteHeader: React.FC<SiteHeaderProps> = ({
+  scrolled,
+  hidden,
+  overArt,
+  pinnedOpen,
+  onTogglePin,
+  onMenuOpenChange,
+}) => {
   const {
     t,
     locale,
@@ -62,7 +73,6 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ scrolled, overArt }) => 
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [langSubmenu, setLangSubmenu] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [pinnedOpen, setPinnedOpen] = useState(false);
   const [menuPos, setMenuPos] = useState<{ top: number; right: number }>({ top: 56, right: 16 });
 
   const optionsBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -84,6 +94,10 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ scrolled, overArt }) => 
     setLangSubmenu(false);
     setProfileOpen(false);
   }, [location.pathname, location.search]);
+
+  useEffect(() => {
+    onMenuOpenChange?.(moreOpen || optionsOpen || profileOpen);
+  }, [moreOpen, optionsOpen, profileOpen, onMenuOpenChange]);
 
   useEffect(() => {
     const onDown = (e: MouseEvent) => {
@@ -152,10 +166,13 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ scrolled, overArt }) => 
   const watchlistCount = Object.keys(library.entries).length;
   const historyCount = library.history.length;
 
+  const effectiveHidden = hidden && !pinnedOpen && !moreOpen && !optionsOpen && !profileOpen;
+
   return (
     <header
       className="sitebar"
       data-scrolled={scrolled ? 'true' : 'false'}
+      data-hidden={effectiveHidden ? 'true' : 'false'}
       data-over-art={overArt ? 'true' : 'false'}
       data-pinned={pinnedOpen ? 'true' : 'false'}
     >
@@ -283,7 +300,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ scrolled, overArt }) => 
           title="Keep the top bar open"
           aria-label="Keep the top bar open"
           aria-pressed={pinnedOpen}
-          onClick={() => setPinnedOpen((p) => !p)}
+          onClick={onTogglePin}
         >
           <ChevronDown size={15} style={{ transform: pinnedOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.18s ease' }} />
         </button>

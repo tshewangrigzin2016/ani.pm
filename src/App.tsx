@@ -38,10 +38,16 @@ import {
   TermsPage,
 } from '@/src/pages/DocsPages';
 
+import { computeNavbarScrollState } from '@/src/utils/navbarScroll';
+
 const AppLayout: React.FC = () => {
   const { pathname } = useLocation();
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const lastScrollTopRef = useRef(0);
   const [scrolled, setScrolled] = useState(false);
+  const [headerHidden, setHeaderHidden] = useState(false);
+  const [pinnedOpen, setPinnedOpen] = useState(false);
+  const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
 
   const pageTag = pathname === '/' ? 'home' : pathname.split('/')[1] || 'home';
   const overArt =
@@ -52,8 +58,16 @@ const AppLayout: React.FC = () => {
     const el = scrollRef.current;
     if (!el) return;
     el.scrollTo({ top: 0 });
+    lastScrollTopRef.current = 0;
     setScrolled(false);
+    setHeaderHidden(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (pinnedOpen || headerMenuOpen) {
+      setHeaderHidden(false);
+    }
+  }, [pinnedOpen, headerMenuOpen]);
 
   return (
     <div className="app">
@@ -61,7 +75,14 @@ const AppLayout: React.FC = () => {
         Skip to content
       </a>
 
-      <SiteHeader scrolled={scrolled} overArt={overArt} />
+      <SiteHeader
+        scrolled={scrolled}
+        hidden={headerHidden}
+        overArt={overArt}
+        pinnedOpen={pinnedOpen}
+        onTogglePin={() => setPinnedOpen((p) => !p)}
+        onMenuOpenChange={setHeaderMenuOpen}
+      />
 
       <main
         id="main-content"
@@ -70,7 +91,16 @@ const AppLayout: React.FC = () => {
         data-page={pageTag}
         onScroll={(e) => {
           const top = (e.currentTarget as HTMLDivElement).scrollTop;
-          setScrolled(top > 28);
+          const next = computeNavbarScrollState({
+            scrollTop: top,
+            prevScrollTop: lastScrollTopRef.current,
+            wasHidden: headerHidden,
+            isPinned: pinnedOpen,
+            hasOpenMenu: headerMenuOpen,
+          });
+          lastScrollTopRef.current = next.nextPrevScrollTop;
+          setScrolled(next.scrolled);
+          setHeaderHidden(next.hidden);
         }}
       >
         <Routes>

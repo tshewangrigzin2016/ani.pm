@@ -216,15 +216,7 @@ export const WatchPlaylistPanel: React.FC<WatchPlaylistPanelProps> = ({
       </div>
 
       {gridView ? (
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
-            gap: 6,
-            maxHeight: 680,
-            overflowY: 'auto',
-          }}
-        >
+        <div className="ep-num-grid ep-num-grid--panel">
           {filtered.slice(0, gridView ? epLimit * 2 : epLimit).map((ep) => {
             const active = ep.number === currentEp;
             return (
@@ -232,29 +224,9 @@ export const WatchPlaylistPanel: React.FC<WatchPlaylistPanelProps> = ({
                 key={ep.number}
                 type="button"
                 onClick={() => onSelectEpisode(ep.number)}
-                style={{
-                  height: 36,
-                  borderRadius: 9,
-                  border: active ? '1.5px solid #ffffff' : '1px solid rgba(255,255,255,0.1)',
-                  background: active ? '#ffffff' : 'rgba(255,255,255,0.05)',
-                  color: active ? '#09090b' : '#ffffff',
-                  fontSize: 12.5,
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 4,
-                }}
+                className={`ep-num-btn ${active ? 'is-active' : ''}`}
+                aria-label={`Episode ${ep.number}`}
               >
-                <span
-                  style={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: '50%',
-                    background: kindColor(ep.kind),
-                  }}
-                />
                 <span>{ep.number}</span>
               </button>
             );

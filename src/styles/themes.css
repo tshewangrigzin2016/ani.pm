@@ -267,8 +267,7 @@ html[data-theme-mode='light'] .sitebar:not([data-over-art='true']) .sitebar__sha
 }
 
 html[data-theme-mode='light'] .sitebar:not([data-over-art='true'])[data-scrolled='true'] .sitebar__shade {
-  background: rgba(255, 255, 255, 0.88);
-  border-bottom: 1px solid rgba(15, 16, 22, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.56) 68%, rgba(255, 255, 255, 0) 100%);
 }
 
 html[data-theme-mode='light'] .sitebar:not([data-over-art='true']) .sitebar__mark,

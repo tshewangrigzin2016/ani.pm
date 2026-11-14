@@ -33,6 +33,7 @@ import { buildEpisodesForAnime } from '@/src/utils/episodes';
 import { filterEpisodeList } from '@/src/utils/catalogFilter';
 import { AnimeCard } from '@/src/components/AnimeCard';
 import { LibraryStatusTrigger } from '@/src/components/LibraryStatusTrigger';
+import { AniListMark, MyAnimeListMark } from '@/src/components/TrackerMarks';
 import { AvatarBadge } from '@/src/components/BrandMark';
 
 type DetailTab = 'episodes' | 'related' | 'manga' | 'similar' | 'comments' | 'downloads';
@@ -269,7 +270,7 @@ export const AnimeDetailPage: React.FC = () => {
                 <span>{t('detail.watchNow')}</span>
               </Link>
 
-              <LibraryStatusTrigger routeId={anime.routeId} variant="hero" />
+              <LibraryStatusTrigger routeId={anime.routeId} variant="hero" className="detail-action-circle" />
 
               <button
                 type="button"
@@ -306,7 +307,7 @@ export const AnimeDetailPage: React.FC = () => {
                 aria-label="View on AniList"
                 title="AniList"
               >
-                <span className="tracker-mark tracker-mark--anilist" style={{ width: 20, height: 20, fontSize: 9 }}>AL</span>
+                <AniListMark size={20} />
               </a>
 
               <a
@@ -317,7 +318,7 @@ export const AnimeDetailPage: React.FC = () => {
                 aria-label="View on MyAnimeList"
                 title="MyAnimeList"
               >
-                <span className="tracker-mark tracker-mark--mal" style={{ width: 24, height: 20, fontSize: 8 }}>MAL</span>
+                <MyAnimeListMark size={20} />
               </a>
 
               <button
@@ -476,22 +477,14 @@ export const AnimeDetailPage: React.FC = () => {
                 </div>
 
                 {gridView ? (
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fill, minmax(64px, 1fr))',
-                      gap: 8,
-                      marginTop: 14,
-                    }}
-                  >
+                  <div className="ep-num-grid ep-num-grid--detail">
                     {filteredEpisodes.slice(0, epLimit * 2).map((ep) => (
                       <Link
                         key={ep.number}
                         to={`/anime/${anime.routeId}/${ep.number}`}
-                        className="watch-pill"
-                        style={{ justifyContent: 'center', height: 38, borderRadius: 10 }}
+                        className="ep-num-btn"
+                        aria-label={`Episode ${ep.number}`}
                       >
-                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: kindColor(ep.kind) }} />
                         <span>{ep.number}</span>
                       </Link>
                     ))}
