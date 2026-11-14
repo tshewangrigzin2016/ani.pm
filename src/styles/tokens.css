@@ -1,0 +1,100 @@
+:root {
+  color-scheme: dark;
+
+  /* Typography & sizing */
+  --font-sans: 'Geist Variable', 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --base-text-scale: 1;
+
+  /* Layout geometry */
+  --card-min: 170px;
+  --anime-card-width: clamp(168.75px, 14.625vw, 222.75px);
+  --anime-card-gap: clamp(10px, 0.65vw, 13px);
+  --cw-card-width: clamp(280px, 24vw, 418px);
+  --site-shelf-width: 1984px;
+  --poster-shelf-width: min(1984px, calc(100vw - 2 * var(--pad, 36px)));
+  --pad: clamp(18px, 3vw, 48px);
+
+  /* Motion & easing */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-lg: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Safe areas & masthead */
+  --sa-top: env(safe-area-inset-top, 0px);
+  --sa-bottom: env(safe-area-inset-bottom, 0px);
+  --sa-left: env(safe-area-inset-left, 0px);
+  --sa-right: env(safe-area-inset-right, 0px);
+  --mh-height: 56px;
+  --mh-offset: calc(var(--mh-height) + var(--sa-top));
+  --mh-z: 2020;
+  --tabbar-height: calc(60px + var(--sa-bottom));
+  --rail-tabbar-gap: 0px;
+
+  /* Glass & frost tokens */
+  --glassfx-gate: ;
+  --glass-bd: rgba(255, 255, 255, 0.14);
+  --rail-arrow-size: 40px;
+  --rail-arrow-glyph: 20px;
+  --rail-arrow-bg: rgba(12, 15, 22, 0.44);
+  --rail-arrow-bg-hover: rgba(32, 36, 48, 0.85);
+  --rail-arrow-ink: rgba(255, 255, 255, 0.9);
+  --rail-arrow-ink-hover: #ffffff;
+  --rail-arrow-border: rgba(255, 255, 255, 0.22);
+  --rail-arrow-blur: saturate(185%) brightness(1.06) blur(22px);
+  --rail-arrow-shadow: 0 8px 22px -18px rgba(0, 0, 0, 0.55);
+  --rail-arrow-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --rail-arrow-lift: 1.07;
+  --rail-arrow-press: 0.94;
+
+  /* Menu surface tokens */
+  --menu-surface: rgba(20, 21, 25, 0.96);
+  --menu-frost-border: rgba(255, 255, 255, 0.11);
+  --menu-frost-radius: 16px;
+  --menu-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --menu-hairline: rgba(255, 255, 255, 0.08);
+  --menu-row-h: 38px;
+  --menu-row-radius: 9px;
+  --menu-row-fs: 13.5px;
+  --menu-row-ink: rgba(255, 255, 255, 0.86);
+  --menu-row-hover: rgba(255, 255, 255, 0.085);
+  --menu-icon: 18px;
+  --menu-icon-ink: rgba(255, 255, 255, 0.62);
+  --menu-muted: rgba(255, 255, 255, 0.48);
+  --menu-accent: rgb(var(--c-accent, 178 156 224));
+  --menu-danger: #ff8e8e;
+  --menu-danger-bg: rgba(255, 80, 80, 0.12);
+}
+
+html[data-glassfx='off'] {
+  --glassfx-gate: initial;
+}
+
+html[data-text-size='small'] {
+  --base-text-scale: 0.93;
+  font-size: 14.8px;
+}
+
+html[data-text-size='medium'] {
+  --base-text-scale: 1;
+  font-size: 16px;
+}
+
+html[data-text-size='large'] {
+  --base-text-scale: 1.08;
+  font-size: 17.2px;
+}
+
+html[data-animations='off'] *,
+html[data-animations='off'] *::before,
+html[data-animations='off'] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --pad: 14px;
+    --rail-tabbar-gap: var(--tabbar-height);
+  }
+}

@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Avatar Decorations & Banner Particle Effects
+   ========================================================================== */
+.bfx {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.bfx i {
+  position: absolute;
+  display: block;
+  will-change: transform, opacity;
+}
+
+.bfx--sakura i {
+  top: -16px;
+  left: var(--x);
+  width: var(--s);
+  height: calc(var(--s) * 0.8);
+  border-radius: 70% 0;
+  background: linear-gradient(135deg, #fdf2f8, #f9a8d4 60%, #f472b6);
+  opacity: 0;
+  animation: bfx-drift var(--d) linear var(--delay) infinite;
+}
+
+@keyframes bfx-drift {
+  0% {
+    transform: translateZ(0) rotate(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.95;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(var(--dx), 260px, 0) rotate(560deg);
+    opacity: 0;
+  }
+}
+
+.bfx--snow i {
+  top: -10px;
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0 45%, rgba(255, 255, 255, 0.5) 60%, transparent 72%);
+  opacity: 0;
+  animation: bfx-snow var(--d) linear var(--delay) infinite;
+}
+
+@keyframes bfx-snow {
+  0% {
+    transform: translateZ(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate3d(var(--dx), 120px, 0);
+  }
+  100% {
+    transform: translate3d(0, 250px, 0);
+    opacity: 0.2;
+  }
+}
+
+.bfx--stars i {
+  left: var(--x);
+  top: var(--y);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+  animation: bfx-twinkle var(--d) ease-in-out var(--delay) infinite;
+}
+
+@keyframes bfx-twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.bfx--embers i {
+  bottom: -8px;
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffbeb 0, #fffbeb 22%, #fdba74 40%, #f97316 55%, rgba(220, 38, 38, 0) 74%);
+  opacity: 0;
+  animation: bfx-ember var(--d) ease-out var(--delay) infinite;
+}
+
+@keyframes bfx-ember {
+  0% {
+    transform: translateZ(0) scale(1);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--dx), -230px, 0) scale(0.4);
+    opacity: 0;
+  }
+}
+
+.avatar-frame-ring {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.avatar-frame-ring--crown {
+  box-shadow: 0 0 0 2.5px #fbbf24, 0 0 18px rgba(251, 191, 36, 0.45);
+}
+
+.avatar-frame-ring--celestial {
+  box-shadow: 0 0 0 2.5px #93c5fd, 0 0 18px rgba(147, 197, 253, 0.45);
+}
+
+.avatar-frame-ring--crimson {
+  box-shadow: 0 0 0 2.5px #fb7185, 0 0 18px rgba(251, 113, 133, 0.45);
+}
+
+.avatar-frame-ring--neon {
+  box-shadow: 0 0 0 2.5px #c084fc, 0 0 18px rgba(192, 132, 252, 0.45);
+}

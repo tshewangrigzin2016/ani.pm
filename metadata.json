@@ -1,0 +1,6 @@
+{
+  "name": "ani.pm",
+  "description": "Subbed and dubbed anime, tracked across every device you watch on.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

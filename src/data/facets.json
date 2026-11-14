@@ -1,0 +1,1606 @@
+{
+  "genres": [
+    {
+      "name": "Comedy",
+      "count": 5335
+    },
+    {
+      "name": "Action",
+      "count": 4866
+    },
+    {
+      "name": "Fantasy",
+      "count": 3734
+    },
+    {
+      "name": "Adventure",
+      "count": 3187
+    },
+    {
+      "name": "Drama",
+      "count": 2870
+    },
+    {
+      "name": "Sci-Fi",
+      "count": 2548
+    },
+    {
+      "name": "Romance",
+      "count": 2467
+    },
+    {
+      "name": "Shounen",
+      "count": 1960
+    },
+    {
+      "name": "Slice of Life",
+      "count": 1911
+    },
+    {
+      "name": "Supernatural",
+      "count": 1708
+    },
+    {
+      "name": "School",
+      "count": 1625
+    },
+    {
+      "name": "Mecha",
+      "count": 1006
+    },
+    {
+      "name": "Ecchi",
+      "count": 1004
+    },
+    {
+      "name": "Historical",
+      "count": 1003
+    },
+    {
+      "name": "Mystery",
+      "count": 928
+    },
+    {
+      "name": "Magic",
+      "count": 873
+    },
+    {
+      "name": "Seinen",
+      "count": 839
+    },
+    {
+      "name": "Martial Arts",
+      "count": 634
+    },
+    {
+      "name": "Shoujo",
+      "count": 620
+    },
+    {
+      "name": "Military",
+      "count": 540
+    },
+    {
+      "name": "Sports",
+      "count": 538
+    },
+    {
+      "name": "Super Power",
+      "count": 532
+    },
+    {
+      "name": "Music",
+      "count": 510
+    },
+    {
+      "name": "Psychological",
+      "count": 468
+    },
+    {
+      "name": "Kids",
+      "count": 458
+    },
+    {
+      "name": "Horror",
+      "count": 439
+    },
+    {
+      "name": "Harem",
+      "count": 430
+    },
+    {
+      "name": "Space",
+      "count": 424
+    },
+    {
+      "name": "Demons",
+      "count": 390
+    },
+    {
+      "name": "Parody",
+      "count": 348
+    },
+    {
+      "name": "Game",
+      "count": 344
+    },
+    {
+      "name": "Thriller",
+      "count": 243
+    },
+    {
+      "name": "Police",
+      "count": 209
+    },
+    {
+      "name": "Isekai",
+      "count": 202
+    },
+    {
+      "name": "Samurai",
+      "count": 159
+    },
+    {
+      "name": "Vampire",
+      "count": 149
+    },
+    {
+      "name": "Shounen Ai",
+      "count": 124
+    },
+    {
+      "name": "Shoujo Ai",
+      "count": 106
+    },
+    {
+      "name": "Josei",
+      "count": 90
+    },
+    {
+      "name": "Dementia",
+      "count": 79
+    },
+    {
+      "name": "Mahou Shoujo",
+      "count": 52
+    },
+    {
+      "name": "Cars",
+      "count": 47
+    },
+    {
+      "name": "Hentai",
+      "count": 6
+    },
+    {
+      "name": "Suspense",
+      "count": 4
+    },
+    {
+      "name": "Boys Love",
+      "count": 2
+    },
+    {
+      "name": "Gourmet",
+      "count": 2
+    },
+    {
+      "name": "Gag Humor",
+      "count": 1
+    },
+    {
+      "name": "Girls Love",
+      "count": 1
+    },
+    {
+      "name": "Idols (Female)",
+      "count": 1
+    },
+    {
+      "name": "Pets",
+      "count": 1
+    }
+  ],
+  "tags": [
+    {
+      "name": "Male Protagonist",
+      "count": 3565
+    },
+    {
+      "name": "Female Protagonist",
+      "count": 3064
+    },
+    {
+      "name": "School",
+      "count": 2078
+    },
+    {
+      "name": "Primarily Female Cast",
+      "count": 1754
+    },
+    {
+      "name": "Heterosexual",
+      "count": 1570
+    },
+    {
+      "name": "Shounen",
+      "count": 1558
+    },
+    {
+      "name": "Magic",
+      "count": 1514
+    },
+    {
+      "name": "Ensemble Cast",
+      "count": 1446
+    },
+    {
+      "name": "Primarily Adult Cast",
+      "count": 1317
+    },
+    {
+      "name": "Nudity",
+      "count": 1079
+    },
+    {
+      "name": "Super Power",
+      "count": 1076
+    },
+    {
+      "name": "Primarily Teen Cast",
+      "count": 1062
+    },
+    {
+      "name": "Urban",
+      "count": 1052
+    },
+    {
+      "name": "Urban Fantasy",
+      "count": 1047
+    },
+    {
+      "name": "Primarily Male Cast",
+      "count": 968
+    },
+    {
+      "name": "Episodic",
+      "count": 966
+    },
+    {
+      "name": "CGI",
+      "count": 950
+    },
+    {
+      "name": "Swordplay",
+      "count": 935
+    },
+    {
+      "name": "Seinen",
+      "count": 920
+    },
+    {
+      "name": "Kuudere",
+      "count": 851
+    },
+    {
+      "name": "Coming of Age",
+      "count": 783
+    },
+    {
+      "name": "Female Harem",
+      "count": 771
+    },
+    {
+      "name": "Guns",
+      "count": 769
+    },
+    {
+      "name": "Cute Girls Doing Cute Things",
+      "count": 747
+    },
+    {
+      "name": "Demons",
+      "count": 709
+    },
+    {
+      "name": "Military",
+      "count": 704
+    },
+    {
+      "name": "Animals",
+      "count": 675
+    },
+    {
+      "name": "Historical",
+      "count": 654
+    },
+    {
+      "name": "Parody",
+      "count": 647
+    },
+    {
+      "name": "Isekai",
+      "count": 646
+    },
+    {
+      "name": "Tsundere",
+      "count": 645
+    },
+    {
+      "name": "Gore",
+      "count": 626
+    },
+    {
+      "name": "Henshin",
+      "count": 622
+    },
+    {
+      "name": "Slapstick",
+      "count": 597
+    },
+    {
+      "name": "Foreign",
+      "count": 595
+    },
+    {
+      "name": "War",
+      "count": 578
+    },
+    {
+      "name": "Work",
+      "count": 568
+    },
+    {
+      "name": "Surreal Comedy",
+      "count": 552
+    },
+    {
+      "name": "Philosophy",
+      "count": 550
+    },
+    {
+      "name": "School Club",
+      "count": 548
+    },
+    {
+      "name": "Robots",
+      "count": 542
+    },
+    {
+      "name": "Kids",
+      "count": 536
+    },
+    {
+      "name": "Aliens",
+      "count": 516
+    },
+    {
+      "name": "Idol",
+      "count": 512
+    },
+    {
+      "name": "Space",
+      "count": 501
+    },
+    {
+      "name": "Politics",
+      "count": 466
+    },
+    {
+      "name": "Rural",
+      "count": 464
+    },
+    {
+      "name": "Love Triangle",
+      "count": 463
+    },
+    {
+      "name": "LGBTQ+ Themes",
+      "count": 462
+    },
+    {
+      "name": "Full CGI",
+      "count": 456
+    },
+    {
+      "name": "Martial Arts",
+      "count": 438
+    },
+    {
+      "name": "Shoujo",
+      "count": 433
+    },
+    {
+      "name": "Anti-Hero",
+      "count": 429
+    },
+    {
+      "name": "Family Life",
+      "count": 428
+    },
+    {
+      "name": "Primarily Child Cast",
+      "count": 412
+    },
+    {
+      "name": "Meta",
+      "count": 404
+    },
+    {
+      "name": "Chibi",
+      "count": 403
+    },
+    {
+      "name": "Travel",
+      "count": 402
+    },
+    {
+      "name": "Crime",
+      "count": 400
+    },
+    {
+      "name": "Iyashikei",
+      "count": 400
+    },
+    {
+      "name": "Kemonomimi",
+      "count": 393
+    },
+    {
+      "name": "Police",
+      "count": 378
+    },
+    {
+      "name": "Gods",
+      "count": 365
+    },
+    {
+      "name": "Food",
+      "count": 349
+    },
+    {
+      "name": "Tomboy",
+      "count": 349
+    },
+    {
+      "name": "Real Robot",
+      "count": 345
+    },
+    {
+      "name": "Found Family",
+      "count": 343
+    },
+    {
+      "name": "Mythology",
+      "count": 340
+    },
+    {
+      "name": "Artificial Intelligence",
+      "count": 333
+    },
+    {
+      "name": "Detective",
+      "count": 318
+    },
+    {
+      "name": "Yuri",
+      "count": 299
+    },
+    {
+      "name": "Super Robot",
+      "count": 298
+    },
+    {
+      "name": "Post-Apocalyptic",
+      "count": 296
+    },
+    {
+      "name": "Revenge",
+      "count": 293
+    },
+    {
+      "name": "Dragons",
+      "count": 288
+    },
+    {
+      "name": "Twins",
+      "count": 288
+    },
+    {
+      "name": "Anthropomorphism",
+      "count": 279
+    },
+    {
+      "name": "Shapeshifting",
+      "count": 279
+    },
+    {
+      "name": "Dystopian",
+      "count": 270
+    },
+    {
+      "name": "Bullying",
+      "count": 269
+    },
+    {
+      "name": "Medieval",
+      "count": 269
+    },
+    {
+      "name": "Tanned Skin",
+      "count": 265
+    },
+    {
+      "name": "Youkai",
+      "count": 262
+    },
+    {
+      "name": "Monster Girl",
+      "count": 259
+    },
+    {
+      "name": "Maids",
+      "count": 255
+    },
+    {
+      "name": "Crossdressing",
+      "count": 254
+    },
+    {
+      "name": "Ojou-sama",
+      "count": 249
+    },
+    {
+      "name": "Video Games",
+      "count": 241
+    },
+    {
+      "name": "Otaku Culture",
+      "count": 236
+    },
+    {
+      "name": "Body Horror",
+      "count": 232
+    },
+    {
+      "name": "Survival",
+      "count": 225
+    },
+    {
+      "name": "Cultivation",
+      "count": 223
+    },
+    {
+      "name": "Educational",
+      "count": 223
+    },
+    {
+      "name": "Fugitive",
+      "count": 223
+    },
+    {
+      "name": "Samurai",
+      "count": 222
+    },
+    {
+      "name": "Orphan",
+      "count": 217
+    },
+    {
+      "name": "Ghost",
+      "count": 216
+    },
+    {
+      "name": "Cute Boys Doing Cute Things",
+      "count": 215
+    },
+    {
+      "name": "Superhero",
+      "count": 214
+    },
+    {
+      "name": "Vampire",
+      "count": 212
+    },
+    {
+      "name": "Amnesia",
+      "count": 209
+    },
+    {
+      "name": "Nekomimi",
+      "count": 208
+    },
+    {
+      "name": "Kaiju",
+      "count": 204
+    },
+    {
+      "name": "Cyberpunk",
+      "count": 203
+    },
+    {
+      "name": "Elf",
+      "count": 200
+    },
+    {
+      "name": "Ships",
+      "count": 200
+    },
+    {
+      "name": "Conspiracy",
+      "count": 198
+    },
+    {
+      "name": "Assassins",
+      "count": 196
+    },
+    {
+      "name": "Unrequited Love",
+      "count": 193
+    },
+    {
+      "name": "Delinquents",
+      "count": 186
+    },
+    {
+      "name": "Boys' Love",
+      "count": 181
+    },
+    {
+      "name": "Acting",
+      "count": 177
+    },
+    {
+      "name": "Witch",
+      "count": 177
+    },
+    {
+      "name": "Religion",
+      "count": 176
+    },
+    {
+      "name": "Tokusatsu",
+      "count": 175
+    },
+    {
+      "name": "Coastal",
+      "count": 169
+    },
+    {
+      "name": "Virtual World",
+      "count": 167
+    },
+    {
+      "name": "Archery",
+      "count": 161
+    },
+    {
+      "name": "Ninja",
+      "count": 154
+    },
+    {
+      "name": "Teacher",
+      "count": 154
+    },
+    {
+      "name": "Dancing",
+      "count": 152
+    },
+    {
+      "name": "Disability",
+      "count": 152
+    },
+    {
+      "name": "Environmental",
+      "count": 151
+    },
+    {
+      "name": "Adoption",
+      "count": 148
+    },
+    {
+      "name": "Motorcycles",
+      "count": 148
+    },
+    {
+      "name": "Cars",
+      "count": 147
+    },
+    {
+      "name": "Outdoor Activities",
+      "count": 146
+    },
+    {
+      "name": "Royal Affairs",
+      "count": 145
+    },
+    {
+      "name": "Terrorism",
+      "count": 145
+    },
+    {
+      "name": "Achronological Order",
+      "count": 142
+    },
+    {
+      "name": "Band",
+      "count": 141
+    },
+    {
+      "name": "Drawing",
+      "count": 138
+    },
+    {
+      "name": "College",
+      "count": 137
+    },
+    {
+      "name": "Gender Bending",
+      "count": 136
+    },
+    {
+      "name": "Satire",
+      "count": 136
+    },
+    {
+      "name": "Musical Theater",
+      "count": 135
+    },
+    {
+      "name": "Chuunibyou",
+      "count": 133
+    },
+    {
+      "name": "Cyborg",
+      "count": 131
+    },
+    {
+      "name": "Rehabilitation",
+      "count": 130
+    },
+    {
+      "name": "Josei",
+      "count": 129
+    }
+  ],
+  "studios": [
+    {
+      "name": "Toei Animation",
+      "count": 629
+    },
+    {
+      "name": "Sunrise",
+      "count": 444
+    },
+    {
+      "name": "J.C.Staff",
+      "count": 383
+    },
+    {
+      "name": "Madhouse",
+      "count": 345
+    },
+    {
+      "name": "Production I.G",
+      "count": 344
+    },
+    {
+      "name": "Studio Deen",
+      "count": 297
+    },
+    {
+      "name": "TMS Entertainment",
+      "count": 268
+    },
+    {
+      "name": "Studio Pierrot",
+      "count": 260
+    },
+    {
+      "name": "A-1 Pictures",
+      "count": 232
+    },
+    {
+      "name": "AIC",
+      "count": 214
+    },
+    {
+      "name": "OLM",
+      "count": 191
+    },
+    {
+      "name": "Shin-Ei Animation",
+      "count": 177
+    },
+    {
+      "name": "Xebec",
+      "count": 175
+    },
+    {
+      "name": "Bones",
+      "count": 153
+    },
+    {
+      "name": "Tatsunoko Production",
+      "count": 142
+    },
+    {
+      "name": "Gonzo",
+      "count": 132
+    },
+    {
+      "name": "Brain's Base",
+      "count": 131
+    },
+    {
+      "name": "Shaft",
+      "count": 130
+    },
+    {
+      "name": "Kyoto Animation",
+      "count": 127
+    },
+    {
+      "name": "Nippon Animation",
+      "count": 122
+    },
+    {
+      "name": "Silver Link.",
+      "count": 117
+    },
+    {
+      "name": "Satelight",
+      "count": 108
+    },
+    {
+      "name": "LIDENFILMS",
+      "count": 103
+    },
+    {
+      "name": "Ruo Hong Culture",
+      "count": 96
+    },
+    {
+      "name": "Doga Kobo",
+      "count": 90
+    },
+    {
+      "name": "Zexcs",
+      "count": 89
+    },
+    {
+      "name": "MAPPA",
+      "count": 80
+    },
+    {
+      "name": "feel.",
+      "count": 79
+    },
+    {
+      "name": "Group TAC",
+      "count": 75
+    },
+    {
+      "name": "Production Reed",
+      "count": 73
+    },
+    {
+      "name": "Studio Comet",
+      "count": 71
+    },
+    {
+      "name": "Wit Studio",
+      "count": 70
+    },
+    {
+      "name": "Lerche",
+      "count": 69
+    },
+    {
+      "name": "8bit",
+      "count": 68
+    },
+    {
+      "name": "Gainax",
+      "count": 67
+    },
+    {
+      "name": "P.A. Works",
+      "count": 67
+    },
+    {
+      "name": "Tezuka Productions",
+      "count": 64
+    },
+    {
+      "name": "Arms",
+      "count": 63
+    },
+    {
+      "name": "Bandai Namco Pictures",
+      "count": 63
+    },
+    {
+      "name": "Studio Hibari",
+      "count": 63
+    },
+    {
+      "name": "TNK",
+      "count": 62
+    },
+    {
+      "name": "CloverWorks",
+      "count": 61
+    },
+    {
+      "name": "Tokyo Movie Shinsha",
+      "count": 61
+    },
+    {
+      "name": "ufotable",
+      "count": 59
+    },
+    {
+      "name": "Kinema Citrus",
+      "count": 58
+    },
+    {
+      "name": "Diomedea",
+      "count": 56
+    },
+    {
+      "name": "Haoliners Animation League",
+      "count": 52
+    },
+    {
+      "name": "Studio Gokumi",
+      "count": 52
+    },
+    {
+      "name": "Artland",
+      "count": 51
+    },
+    {
+      "name": "Magic Bus",
+      "count": 51
+    },
+    {
+      "name": "SynergySP",
+      "count": 51
+    },
+    {
+      "name": "A.C.G.T.",
+      "count": 48
+    },
+    {
+      "name": "J.C.STAFF",
+      "count": 48
+    },
+    {
+      "name": "SANZIGEN",
+      "count": 48
+    },
+    {
+      "name": "Actas",
+      "count": 47
+    },
+    {
+      "name": "EMT Squared",
+      "count": 46
+    },
+    {
+      "name": "Hal Film Maker",
+      "count": 45
+    },
+    {
+      "name": "Telecom Animation Film",
+      "count": 44
+    },
+    {
+      "name": "MADHOUSE",
+      "count": 43
+    },
+    {
+      "name": "Studio 4Â°C",
+      "count": 43
+    },
+    {
+      "name": "David Production",
+      "count": 42
+    },
+    {
+      "name": "Project No.9",
+      "count": 42
+    },
+    {
+      "name": "CG Year",
+      "count": 41
+    },
+    {
+      "name": "Gallop",
+      "count": 40
+    },
+    {
+      "name": "Passione",
+      "count": 40
+    },
+    {
+      "name": "White Fox",
+      "count": 40
+    },
+    {
+      "name": "Zero-G",
+      "count": 40
+    },
+    {
+      "name": "Asahi Production",
+      "count": 39
+    },
+    {
+      "name": "Seven",
+      "count": 39
+    },
+    {
+      "name": "Suoyi Technology",
+      "count": 39
+    },
+    {
+      "name": "Studio Fantasia",
+      "count": 38
+    },
+    {
+      "name": "Radix",
+      "count": 37
+    },
+    {
+      "name": "Signal.MD",
+      "count": 37
+    },
+    {
+      "name": "Studio DEEN",
+      "count": 37
+    },
+    {
+      "name": "Bee Train",
+      "count": 36
+    },
+    {
+      "name": "Bridge",
+      "count": 35
+    },
+    {
+      "name": "DLE",
+      "count": 35
+    },
+    {
+      "name": "Polygon Pictures",
+      "count": 35
+    },
+    {
+      "name": "GoHands",
+      "count": 34
+    },
+    {
+      "name": "Seven Arcs",
+      "count": 34
+    },
+    {
+      "name": "Sparkly Key Animation",
+      "count": 34
+    },
+    {
+      "name": "Daume",
+      "count": 33
+    },
+    {
+      "name": "Triangle Staff",
+      "count": 33
+    },
+    {
+      "name": "TYO Animations",
+      "count": 33
+    },
+    {
+      "name": "Manglobe",
+      "count": 32
+    },
+    {
+      "name": "Ajia-Do",
+      "count": 31
+    },
+    {
+      "name": "animate Film",
+      "count": 31
+    },
+    {
+      "name": "Studio PuYUKAI",
+      "count": 31
+    },
+    {
+      "name": "Yumeta Company",
+      "count": 31
+    },
+    {
+      "name": "Hoods Entertainment",
+      "count": 30
+    },
+    {
+      "name": "Creators in Pack",
+      "count": 29
+    },
+    {
+      "name": "Lay-duce",
+      "count": 29
+    },
+    {
+      "name": "Sparkly Key Animation Studio",
+      "count": 29
+    },
+    {
+      "name": "Studio Ghibli",
+      "count": 29
+    },
+    {
+      "name": "AIC A.S.T.A.",
+      "count": 28
+    },
+    {
+      "name": "Nomad",
+      "count": 28
+    },
+    {
+      "name": "Wonder Cat Animation",
+      "count": 28
+    },
+    {
+      "name": "Artmic",
+      "count": 27
+    },
+    {
+      "name": "asread.",
+      "count": 27
+    },
+    {
+      "name": "Mushi Production",
+      "count": 27
+    },
+    {
+      "name": "B.CMAY PICTURES",
+      "count": 26
+    },
+    {
+      "name": "Trigger",
+      "count": 26
+    },
+    {
+      "name": "Connect",
+      "count": 25
+    },
+    {
+      "name": "Fanworks",
+      "count": 25
+    },
+    {
+      "name": "Ashi Productions",
+      "count": 24
+    },
+    {
+      "name": "BYMENT",
+      "count": 24
+    },
+    {
+      "name": "Millepensee",
+      "count": 24
+    },
+    {
+      "name": "Studio Colorido",
+      "count": 24
+    },
+    {
+      "name": "TROYCA",
+      "count": 24
+    },
+    {
+      "name": "Yokohama Animation Lab",
+      "count": 24
+    },
+    {
+      "name": "APPP",
+      "count": 23
+    },
+    {
+      "name": "ILCA",
+      "count": 23
+    },
+    {
+      "name": "Production IMS",
+      "count": 23
+    },
+    {
+      "name": "AIC Plus+",
+      "count": 22
+    },
+    {
+      "name": "CoMix Wave Films",
+      "count": 22
+    },
+    {
+      "name": "Graphinica",
+      "count": 22
+    },
+    {
+      "name": "Science SARU",
+      "count": 22
+    },
+    {
+      "name": "Seven Arcs Pictures",
+      "count": 22
+    },
+    {
+      "name": "Studio 3Hz",
+      "count": 22
+    },
+    {
+      "name": "bilibili",
+      "count": 21
+    },
+    {
+      "name": "C-Station",
+      "count": 21
+    },
+    {
+      "name": "C2C",
+      "count": 21
+    },
+    {
+      "name": "Motion Magic",
+      "count": 21
+    },
+    {
+      "name": "Shirogumi",
+      "count": 21
+    },
+    {
+      "name": "Chaos Project",
+      "count": 20
+    },
+    {
+      "name": "ENGI",
+      "count": 20
+    },
+    {
+      "name": "Lesprit",
+      "count": 20
+    },
+    {
+      "name": "NAZ",
+      "count": 20
+    },
+    {
+      "name": "Orange",
+      "count": 20
+    },
+    {
+      "name": "Soyep",
+      "count": 20
+    },
+    {
+      "name": "Studio Kai",
+      "count": 20
+    },
+    {
+      "name": "Ascension",
+      "count": 19
+    },
+    {
+      "name": "Bibury Animation Studios",
+      "count": 19
+    },
+    {
+      "name": "Shuka",
+      "count": 19
+    },
+    {
+      "name": "Animate Film",
+      "count": 18
+    },
+    {
+      "name": "Foch",
+      "count": 18
+    },
+    {
+      "name": "SILVER LINK.",
+      "count": 18
+    },
+    {
+      "name": "Ajiado",
+      "count": 17
+    },
+    {
+      "name": "AXsiZ",
+      "count": 17
+    },
+    {
+      "name": "Imageworks Studio",
+      "count": 17
+    },
+    {
+      "name": "Ordet",
+      "count": 17
+    },
+    {
+      "name": "Original Force",
+      "count": 17
+    },
+    {
+      "name": "Rocen",
+      "count": 17
+    },
+    {
+      "name": "Tokyo Kids",
+      "count": 17
+    },
+    {
+      "name": "Colored Pencil Animation",
+      "count": 16
+    },
+    {
+      "name": "Encourage Films",
+      "count": 16
+    },
+    {
+      "name": "Gathering",
+      "count": 16
+    },
+    {
+      "name": "Maho Film",
+      "count": 16
+    },
+    {
+      "name": "Studio A-CAT",
+      "count": 16
+    },
+    {
+      "name": "Studio Live",
+      "count": 16
+    },
+    {
+      "name": "Felix Film",
+      "count": 15
+    },
+    {
+      "name": "Picture Magic",
+      "count": 15
+    },
+    {
+      "name": "Xing Yi Kai Chen",
+      "count": 15
+    },
+    {
+      "name": "Arvo Animation",
+      "count": 14
+    },
+    {
+      "name": "Foch Films",
+      "count": 14
+    },
+    {
+      "name": "Gaina",
+      "count": 14
+    },
+    {
+      "name": "GEEK TOYS",
+      "count": 14
+    },
+    {
+      "name": "HMCH",
+      "count": 14
+    },
+    {
+      "name": "IMAGICA Infos",
+      "count": 14
+    },
+    {
+      "name": "Mili Pictures",
+      "count": 14
+    }
+  ],
+  "dubLanguages": [
+    {
+      "name": "eng",
+      "count": 4417
+    },
+    {
+      "name": "fre",
+      "count": 666
+    },
+    {
+      "name": "chi",
+      "count": 627
+    },
+    {
+      "name": "spa",
+      "count": 536
+    },
+    {
+      "name": "ger",
+      "count": 474
+    },
+    {
+      "name": "por",
+      "count": 445
+    },
+    {
+      "name": "ita",
+      "count": 444
+    },
+    {
+      "name": "tha",
+      "count": 184
+    },
+    {
+      "name": "hin",
+      "count": 124
+    },
+    {
+      "name": "kor",
+      "count": 117
+    },
+    {
+      "name": "rus",
+      "count": 109
+    },
+    {
+      "name": "pol",
+      "count": 102
+    },
+    {
+      "name": "ind",
+      "count": 80
+    },
+    {
+      "name": "tur",
+      "count": 73
+    },
+    {
+      "name": "ara",
+      "count": 65
+    },
+    {
+      "name": "hun",
+      "count": 54
+    },
+    {
+      "name": "tam",
+      "count": 48
+    },
+    {
+      "name": "tel",
+      "count": 46
+    },
+    {
+      "name": "vie",
+      "count": 38
+    },
+    {
+      "name": "cze",
+      "count": 32
+    },
+    {
+      "name": "fin",
+      "count": 27
+    },
+    {
+      "name": "swe",
+      "count": 24
+    },
+    {
+      "name": "nor",
+      "count": 22
+    },
+    {
+      "name": "dut",
+      "count": 21
+    },
+    {
+      "name": "dan",
+      "count": 20
+    },
+    {
+      "name": "cat",
+      "count": 18
+    },
+    {
+      "name": "fil",
+      "count": 15
+    },
+    {
+      "name": "gre",
+      "count": 11
+    },
+    {
+      "name": "ukr",
+      "count": 10
+    },
+    {
+      "name": "heb",
+      "count": 9
+    },
+    {
+      "name": "rum",
+      "count": 9
+    },
+    {
+      "name": "may",
+      "count": 5
+    },
+    {
+      "name": "yue",
+      "count": 5
+    },
+    {
+      "name": "jav",
+      "count": 4
+    },
+    {
+      "name": "hrv",
+      "count": 3
+    },
+    {
+      "name": "baq",
+      "count": 2
+    },
+    {
+      "name": "glg",
+      "count": 2
+    },
+    {
+      "name": "kur",
+      "count": 2
+    },
+    {
+      "name": "new",
+      "count": 2
+    },
+    {
+      "name": "slo",
+      "count": 2
+    },
+    {
+      "name": "afr",
+      "count": 1
+    },
+    {
+      "name": "aka",
+      "count": 1
+    },
+    {
+      "name": "bre",
+      "count": 1
+    },
+    {
+      "name": "cha",
+      "count": 1
+    },
+    {
+      "name": "cmn",
+      "count": 1
+    },
+    {
+      "name": "cre",
+      "count": 1
+    },
+    {
+      "name": "hau",
+      "count": 1
+    },
+    {
+      "name": "mal",
+      "count": 1
+    },
+    {
+      "name": "per",
+      "count": 1
+    }
+  ]
+}
