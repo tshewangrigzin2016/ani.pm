@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   Bell,
   BookOpen,
+  ChevronDown,
   Clock,
   Download,
   Eye,
@@ -58,6 +59,7 @@ export const AnimeDetailPage: React.FC = () => {
   const [gridView, setGridView] = useState(false);
   const [audioFilter, setAudioFilter] = useState<'all' | 'sub' | 'dub'>('all');
   const [epLimit, setEpLimit] = useState(60);
+  const [showAllTags, setShowAllTags] = useState(false);
   const [comments, setComments] = useState(HOME_FEED.comments.slice(0, 6));
   const [commentDraft, setCommentDraft] = useState('');
 
@@ -167,10 +169,77 @@ export const AnimeDetailPage: React.FC = () => {
                   {anime.studios.length ? anime.studios.join(', ') : 'Independent'}
                 </div>
               </div>
+              {anime.season && (
+                <div>
+                  <div className="detail-sidebar-row__label">Season</div>
+                  <div className="detail-sidebar-row__val">
+                    {anime.season} {anime.year ?? ''}
+                  </div>
+                </div>
+              )}
+              <div>
+                <div className="detail-sidebar-row__label">Status</div>
+                <div className="detail-sidebar-row__val">
+                  {isOngoing ? 'Airing' : 'Finished'}
+                </div>
+              </div>
+              <div>
+                <div className="detail-sidebar-row__label">Audio</div>
+                <div className="detail-sidebar-row__val">
+                  {anime.subCount} sub · {anime.dubCount} dub
+                </div>
+              </div>
+              {anime.rating && (
+                <div>
+                  <div className="detail-sidebar-row__label">Rated</div>
+                  <div className="detail-sidebar-row__val">{anime.rating}</div>
+                </div>
+              )}
               {anime.native && (
                 <div>
                   <div className="detail-sidebar-row__label">Native title</div>
                   <div className="detail-sidebar-row__val">{anime.native}</div>
+                </div>
+              )}
+              {anime.tags && anime.tags.length > 0 && (
+                <div>
+                  <div className="detail-sidebar-row__label">Tags</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 4 }}>
+                    {(showAllTags ? anime.tags : anime.tags.slice(0, 4)).map((tg) => (
+                      <Link
+                        key={tg}
+                        to={`/anime?tag=${encodeURIComponent(tg)}`}
+                        style={{
+                          padding: '3px 8px',
+                          borderRadius: 999,
+                          background: 'rgba(255,255,255,0.07)',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          fontSize: 11.5,
+                          color: 'rgba(255,255,255,0.86)',
+                        }}
+                      >
+                        {tg}
+                      </Link>
+                    ))}
+                    {anime.tags.length > 4 && (
+                      <button
+                        type="button"
+                        onClick={() => setShowAllTags((s) => !s)}
+                        style={{
+                          padding: '3px 8px',
+                          borderRadius: 999,
+                          border: '1px solid rgba(255,255,255,0.12)',
+                          background: 'transparent',
+                          color: '#9cc3ff',
+                          fontSize: 11.5,
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {showAllTags ? 'Less' : `+${anime.tags.length - 4} more`}
+                      </button>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -198,8 +267,17 @@ export const AnimeDetailPage: React.FC = () => {
                 </span>
               )}
               {anime.year && <span className="spot-meta-frost">{anime.year}</span>}
-              <span className="spot-meta-frost">{anime.subCount} Sub · {anime.dubCount} Dub</span>
-              {anime.genres.map((g) => (
+              {anime.episodeCount > 0 && (
+                <span className="spot-meta-frost">{anime.episodeCount} Episodes</span>
+              )}
+              {isOngoing && (
+                <span className="spot-meta-frost" style={{ color: '#9cc3ff' }}>
+                  <Clock size={12} />
+                  <span>Next ep in 3d 14h</span>
+                </span>
+              )}
+              {anime.type && <span className="spot-meta-frost">{anime.type}</span>}
+              {anime.genres.slice(0, 3).map((g) => (
                 <Link
                   key={g}
                   to={`/anime?genre=${encodeURIComponent(g)}`}
@@ -208,12 +286,6 @@ export const AnimeDetailPage: React.FC = () => {
                   {g}
                 </Link>
               ))}
-              {isOngoing && (
-                <span className="spot-meta-frost" style={{ color: '#9cc3ff' }}>
-                  <Clock size={12} />
-                  <span>Next ep in 3d 14h</span>
-                </span>
-              )}
             </div>
 
             <p
@@ -240,7 +312,7 @@ export const AnimeDetailPage: React.FC = () => {
                   padding: 0,
                   border: 0,
                   background: 'transparent',
-                  color: '#9cc3ff',
+                  color: '#ffffff',
                   fontSize: 13,
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -252,7 +324,7 @@ export const AnimeDetailPage: React.FC = () => {
 
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10, marginTop: 20 }}>
               <Link
-                to={`/anime/${anime.routeId}/1`}
+                to={`/anime/${anime.routeId}?ep=1`}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -367,18 +439,23 @@ export const AnimeDetailPage: React.FC = () => {
               <div style={{ marginTop: 16 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {arcs.length > 1 && (
-                    <select
-                      className="watch-panel__select"
-                      value={arcFilter}
-                      onChange={(e) => setArcFilter(e.target.value)}
-                    >
-                      <option value="all">{t('detail.allArcs')}</option>
-                      {arcs.map((a) => (
-                        <option key={a} value={a}>
-                          {a}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="watch-select-wrap">
+                      <BookOpen size={14} className="watch-select-wrap__icon" />
+                      <select
+                        className="watch-panel__select watch-panel__select--icon"
+                        value={arcFilter}
+                        onChange={(e) => setArcFilter(e.target.value)}
+                        aria-label="Filter by story arc"
+                      >
+                        <option value="all">{t('detail.allArcs')}</option>
+                        {arcs.map((a) => (
+                          <option key={a} value={a}>
+                            {a}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown size={14} className="watch-select-wrap__chev" />
+                    </div>
                   )}
 
                   <div className="browse-search-pill" style={{ width: '100%', height: 38, borderRadius: 12 }}>
@@ -481,7 +558,7 @@ export const AnimeDetailPage: React.FC = () => {
                     {filteredEpisodes.slice(0, epLimit * 2).map((ep) => (
                       <Link
                         key={ep.number}
-                        to={`/anime/${anime.routeId}/${ep.number}`}
+                        to={`/anime/${anime.routeId}?ep=${ep.number}`}
                         className="ep-num-btn"
                         aria-label={`Episode ${ep.number}`}
                       >
@@ -494,7 +571,7 @@ export const AnimeDetailPage: React.FC = () => {
                     {filteredEpisodes.slice(0, epLimit).map((ep) => (
                       <Link
                         key={ep.number}
-                        to={`/anime/${anime.routeId}/${ep.number}`}
+                        to={`/anime/${anime.routeId}?ep=${ep.number}`}
                         className="detail-ep-card"
                       >
                         <div className="detail-ep-thumb">

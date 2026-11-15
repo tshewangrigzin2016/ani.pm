@@ -43,6 +43,8 @@ export interface AnimeTitle {
   providerTitles?: string[];
   rank?: number;
   isAdult?: boolean;
+  airingAt?: number | null;
+  startDate?: { year?: number | null; month?: number | null; day?: number | null } | null;
 }
 
 export interface EpisodeItem {

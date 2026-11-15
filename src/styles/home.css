@@ -492,12 +492,13 @@
 }
 
 .home-activity-pill__name {
-  flex: 0 1 auto;
-  max-width: 45%;
+  flex: 0 0 auto;
+  max-width: 140px;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .home-activity-pill__body {
@@ -1083,11 +1084,16 @@
 /* Mobile Hero & Activity adjustments */
 @media (max-width: 767px) {
   .spot {
-    height: clamp(610px, 76svh, 660px);
-    min-height: 610px;
+    height: clamp(540px, 69svh, 590px);
+    min-height: 540px;
   }
   .spot-body {
-    bottom: clamp(148px, 21vh, 188px);
+    bottom: clamp(128px, 18vh, 162px);
+    padding-right: 92px;
+  }
+  [dir='rtl'] .spot-body {
+    padding-right: 0;
+    padding-left: 92px;
   }
   .spot .actions {
     gap: 10px;
@@ -1108,7 +1114,7 @@
     right: 14px;
     width: auto;
     transform: none;
-    bottom: clamp(148px, 21vh, 188px);
+    bottom: clamp(128px, 18vh, 162px);
     gap: 8px;
   }
   [dir='rtl'] .spot-nav {
@@ -1116,32 +1122,52 @@
     left: 14px;
   }
   .spot-nav .spot-nav-btn {
-    flex: 0 0 40px;
-    width: 40px;
-    height: 40px;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
   }
   .home > .rows {
-    margin-top: 24px;
+    margin-top: 22px;
+    gap: 22px;
     padding-bottom: calc(var(--tabbar-height) + 28px);
   }
   .row-head {
-    flex-wrap: wrap;
-    gap: 8px 10px;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-bottom: 10px;
   }
   .row-head-title {
     flex: 1 1 auto;
-    gap: 8px 10px;
+    gap: 6px 8px;
+    flex-wrap: wrap;
+    min-width: 0;
   }
   .row-h {
-    font-size: 20px;
+    font-size: 18px;
+    gap: 5px;
+  }
+  .top-source {
+    gap: 5px;
   }
   .top-source__btn {
-    height: 28px;
-    padding: 0 10px 0 5px;
+    height: 26px;
+    padding: 0 8px 0 4px;
+    font-size: 11.5px;
+    gap: 5px;
+  }
+  .tracker-mark {
+    width: 16px;
+    height: 16px;
+    font-size: 7.5px;
+  }
+  .row-view-all {
     font-size: 12px;
+    min-height: 28px;
+    padding: 4px 0 4px 4px;
+    flex-shrink: 0;
   }
   .home-activity-pill.spot-meta-frost {
-    top: -112px;
+    top: -102px;
     width: min(420px, calc(100% - 28px));
     display: flex;
     flex-direction: column;

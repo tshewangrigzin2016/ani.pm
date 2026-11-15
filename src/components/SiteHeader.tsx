@@ -3,12 +3,11 @@ import { createPortal } from 'react-dom';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Bookmark,
-  BookOpen,
   Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Compass,
+  Clock,
   Dices,
   Download,
   Flag,
@@ -634,15 +633,15 @@ export const MobileTabBar: React.FC = () => {
   const savedCount = Object.keys(library.entries).length;
 
   const isHome = pathname === '/' && !searchOpen;
-  const isBrowse = (pathname === '/anime' || pathname.startsWith('/anime/') || pathname === '/latest' || pathname === '/genres') && !searchOpen;
-  const isManga = pathname.startsWith('/manga') && !searchOpen;
+  const isBrowse = (pathname === '/anime' || pathname.startsWith('/anime/') || pathname === '/genres') && !searchOpen;
+  const isLatest = pathname === '/latest' && !searchOpen;
   const isLibrary = pathname.startsWith('/library') && !searchOpen;
 
   return (
     <nav className="mobile-tabbar" aria-label="Mobile navigation dock">
       <Link to="/" className={`mobile-tabbar__btn ${isHome ? 'active' : ''}`} aria-current={isHome ? 'page' : undefined}>
         <span className="mobile-tabbar__icon">
-          <Home size={20} strokeWidth={isHome ? 2.4 : 1.9} />
+          <Home size={20} strokeWidth={isHome ? 2.2 : 1.8} fill={isHome ? 'currentColor' : 'none'} />
         </span>
         <span className="mobile-tabbar__label">{t('nav.home')}</span>
       </Link>
@@ -653,9 +652,20 @@ export const MobileTabBar: React.FC = () => {
         aria-current={isBrowse ? 'page' : undefined}
       >
         <span className="mobile-tabbar__icon">
-          <Compass size={20} strokeWidth={isBrowse ? 2.4 : 1.9} />
+          <LayoutGrid size={20} strokeWidth={isBrowse ? 2.2 : 1.8} />
         </span>
         <span className="mobile-tabbar__label">{t('nav.browse')}</span>
+      </Link>
+
+      <Link
+        to="/latest"
+        className={`mobile-tabbar__btn ${isLatest ? 'active' : ''}`}
+        aria-current={isLatest ? 'page' : undefined}
+      >
+        <span className="mobile-tabbar__icon">
+          <Clock size={20} strokeWidth={isLatest ? 2.2 : 1.8} />
+        </span>
+        <span className="mobile-tabbar__label">{t('nav.latest')}</span>
       </Link>
 
       <button
@@ -665,21 +675,10 @@ export const MobileTabBar: React.FC = () => {
         aria-label="Search anime"
       >
         <span className="mobile-tabbar__icon">
-          <Search size={20} strokeWidth={2.2} />
+          <Search size={20} strokeWidth={2.0} />
         </span>
         <span className="mobile-tabbar__label">Search</span>
       </button>
-
-      <Link
-        to="/manga"
-        className={`mobile-tabbar__btn ${isManga ? 'active' : ''}`}
-        aria-current={isManga ? 'page' : undefined}
-      >
-        <span className="mobile-tabbar__icon">
-          <BookOpen size={20} strokeWidth={isManga ? 2.4 : 1.9} />
-        </span>
-        <span className="mobile-tabbar__label">{t('nav.manga')}</span>
-      </Link>
 
       <Link
         to="/library"
@@ -687,7 +686,7 @@ export const MobileTabBar: React.FC = () => {
         aria-current={isLibrary ? 'page' : undefined}
       >
         <span className="mobile-tabbar__icon">
-          <Bookmark size={20} strokeWidth={isLibrary ? 2.4 : 1.9} />
+          <Bookmark size={20} strokeWidth={isLibrary ? 2.2 : 1.8} fill={isLibrary ? 'currentColor' : 'none'} />
           {savedCount > 0 && <span className="mobile-tabbar__badge">{savedCount > 99 ? '99' : savedCount}</span>}
         </span>
         <span className="mobile-tabbar__label">{t('nav.library')}</span>

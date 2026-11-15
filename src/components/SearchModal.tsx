@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Mic, Search, Sparkles, X } from 'lucide-react';
+import { Mic, Search, X } from 'lucide-react';
 import { useApp } from '@/src/context/AppContext';
 import { CATALOG } from '@/src/data/catalogService';
 import { searchDescribeCatalog } from '@/src/utils/catalogFilter';
@@ -83,21 +83,21 @@ export const SearchModal: React.FC = () => {
             alignItems: 'flex-start',
             justifyContent: 'space-between',
             gap: 12,
-            marginBottom: 16,
+            marginBottom: 18,
           }}
         >
           <div>
             <h2
               style={{
-                margin: '0 0 14px',
-                fontSize: 'clamp(30px, 4vw, 44px)',
-                fontWeight: 700,
+                margin: '0 0 16px',
+                fontSize: 'clamp(34px, 4.5vw, 52px)',
+                fontWeight: 650,
                 letterSpacing: '-0.03em',
-                lineHeight: 1.05,
+                lineHeight: 1.04,
                 color: '#ffffff',
               }}
             >
-              {t('search.heading')}
+              Search Ani.pm
             </h2>
 
             <div
@@ -105,8 +105,8 @@ export const SearchModal: React.FC = () => {
                 display: 'inline-flex',
                 padding: 3,
                 borderRadius: 999,
-                border: '1px solid rgba(255,255,255,0.12)',
-                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                background: 'rgba(255,255,255,0.06)',
               }}
             >
               <button
@@ -114,11 +114,11 @@ export const SearchModal: React.FC = () => {
                 onClick={() => setMode('titles')}
                 style={{
                   height: 30,
-                  padding: '0 14px',
+                  padding: '0 16px',
                   border: 0,
                   borderRadius: 999,
                   cursor: 'pointer',
-                  fontSize: 12.5,
+                  fontSize: 13,
                   fontWeight: 600,
                   background: mode === 'titles' ? '#ffffff' : 'transparent',
                   color: mode === 'titles' ? '#09090b' : 'rgba(255,255,255,0.72)',
@@ -134,17 +134,16 @@ export const SearchModal: React.FC = () => {
                   alignItems: 'center',
                   gap: 5,
                   height: 30,
-                  padding: '0 14px',
+                  padding: '0 16px',
                   border: 0,
                   borderRadius: 999,
                   cursor: 'pointer',
-                  fontSize: 12.5,
+                  fontSize: 13,
                   fontWeight: 600,
                   background: mode === 'describe' ? '#ffffff' : 'transparent',
                   color: mode === 'describe' ? '#09090b' : 'rgba(255,255,255,0.72)',
                 }}
               >
-                <Sparkles size={13} />
                 <span>{t('search.describeTab')}</span>
               </button>
             </div>

@@ -123,9 +123,9 @@ button {
   align-items: center;
   gap: 8px;
   flex: 0 0 auto;
-  height: 36px;
-  padding: 0 4px;
-  margin-inline-end: 8px;
+  height: 40px;
+  padding: 0 10px 0 2px;
+  margin-inline-end: 6px;
   border-radius: 10px;
   text-decoration: none;
 }
@@ -163,7 +163,7 @@ button {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0;
   min-width: 0;
 }
 
@@ -172,14 +172,14 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  height: 36px;
-  padding: 0 11px;
+  height: var(--mh-height, 56px);
+  padding: 0 12px;
   border: 0;
-  border-radius: 9px;
+  border-radius: 0;
   background: transparent;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 13.5px;
-  font-weight: 550;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  font-weight: 560;
   letter-spacing: -0.01em;
   white-space: nowrap;
   cursor: pointer;
@@ -192,17 +192,17 @@ button {
 
 .sitebar__link[aria-current='page'] {
   color: #ffffff;
-  font-weight: 620;
+  font-weight: 600;
 }
 
 .sitebar__link[aria-current='page']::after {
   content: '';
   position: absolute;
-  left: 11px;
-  right: 11px;
-  bottom: 3px;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
   height: 2px;
-  border-radius: 2px;
+  border-radius: 0;
   background: #ffffff;
 }
 
@@ -232,25 +232,25 @@ button {
 .sitebar__search {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  width: clamp(190px, 16vw, 240px);
-  height: 36px;
-  padding: 0 8px 0 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 11px;
-  background: rgba(14, 15, 20, 0.56);
+  gap: 9px;
+  width: clamp(205px, 17.5vw, 246px);
+  height: 38px;
+  padding: 0 7px 0 13px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: var(--glassfx-gate) blur(14px);
   -webkit-backdrop-filter: var(--glassfx-gate) blur(14px);
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 13px;
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13.5px;
+  font-weight: 480;
   cursor: pointer;
   transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
 }
 
 .sitebar__search:hover {
   border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(24, 26, 34, 0.78);
+  background: rgba(18, 19, 24, 0.78);
   color: #ffffff;
 }
 
@@ -266,32 +266,32 @@ button {
   flex: 0 0 auto;
   padding: 3px 6px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 6px;
+  border-radius: 5px;
   background: rgba(255, 255, 255, 0.06);
   color: rgba(255, 255, 255, 0.68);
   font-family: inherit;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 560;
   line-height: 1;
 }
 
 .sitebar__actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex: 0 0 auto;
 }
 
 .yt-icon-button {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   border: 0;
   border-radius: 50%;
   background: transparent;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.88);
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -303,7 +303,7 @@ button {
 }
 
 .sitebar__pin {
-  display: inline-grid;
+  display: none;
   place-items: center;
   width: 28px;
   height: 28px;
@@ -313,6 +313,11 @@ button {
   color: rgba(255, 255, 255, 0.68);
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.sitebar[data-scrolled='true'] .sitebar__pin,
+.sitebar[data-pinned='true'] .sitebar__pin {
+  display: inline-grid;
 }
 
 .sitebar__pin:hover,
@@ -544,16 +549,16 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: 32px;
-  padding: 0 13px 0 10px;
+  gap: 7px;
+  height: 36px;
+  padding: 0 15px 0 12px;
   border: 0;
   border-radius: 999px;
   background: #ffffff;
-  color: #0f0f11;
+  color: #0e0e10;
   font: inherit;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 13.5px;
+  font-weight: 650;
   letter-spacing: -0.01em;
   white-space: nowrap;
   cursor: pointer;
@@ -995,9 +1000,13 @@ button {
   }
 
   .yt-signin {
-    height: 32px;
-    padding: 0 12px 0 9px;
-    font-size: 12.5px;
+    height: 34px;
+    padding: 0 15px;
+    font-size: 13px;
+  }
+
+  .yt-signin__glyph {
+    display: none;
   }
 
   .yt-pmenu__trigger-name {
@@ -1028,8 +1037,8 @@ button {
     align-items: center;
     height: var(--tabbar-height);
     padding: 4px 6px calc(4px + var(--sa-bottom));
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(12, 13, 18, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(10, 11, 14, 0.94);
     backdrop-filter: var(--glassfx-gate) blur(22px) saturate(165%);
     -webkit-backdrop-filter: var(--glassfx-gate) blur(22px) saturate(165%);
     box-shadow: 0 -10px 32px rgba(0, 0, 0, 0.52);
@@ -1047,7 +1056,7 @@ button {
     border: 0;
     border-radius: 12px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.56);
+    color: rgba(255, 255, 255, 0.52);
     text-decoration: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -1062,10 +1071,9 @@ button {
     position: relative;
     display: grid;
     place-items: center;
-    width: 46px;
-    height: 28px;
-    border-radius: 999px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    width: 32px;
+    height: 24px;
+    transition: transform 0.2s ease;
   }
 
   .mobile-tabbar__btn.active {
@@ -1073,8 +1081,8 @@ button {
   }
 
   .mobile-tabbar__btn.active .mobile-tabbar__icon {
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    background: transparent;
+    box-shadow: none;
   }
 
   .mobile-tabbar__label {

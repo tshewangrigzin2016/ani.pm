@@ -39,9 +39,16 @@ import {
 } from '@/src/pages/DocsPages';
 
 import { computeNavbarScrollState } from '@/src/utils/navbarScroll';
+import { parseAnimeEpQuery } from '@/src/utils/homeSchedule';
+
+const AnimeOrWatchRoute: React.FC = () => {
+  const { search } = useLocation();
+  const ep = parseAnimeEpQuery(search);
+  return ep !== null ? <WatchPage /> : <AnimeDetailPage />;
+};
 
 const AppLayout: React.FC = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const lastScrollTopRef = useRef(0);
   const [scrolled, setScrolled] = useState(false);
@@ -49,10 +56,11 @@ const AppLayout: React.FC = () => {
   const [pinnedOpen, setPinnedOpen] = useState(false);
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
 
+  const epQuery = parseAnimeEpQuery(search);
   const pageTag = pathname === '/' ? 'home' : pathname.split('/')[1] || 'home';
   const overArt =
     pathname === '/' ||
-    (/^\/(anime|ani)\/[^/]+$/.test(pathname));
+    (/^\/(anime|ani)\/[^/]+$/.test(pathname) && epQuery === null);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -61,7 +69,7 @@ const AppLayout: React.FC = () => {
     lastScrollTopRef.current = 0;
     setScrolled(false);
     setHeaderHidden(false);
-  }, [pathname]);
+  }, [pathname, epQuery]);
 
   useEffect(() => {
     if (pinnedOpen || headerMenuOpen) {
@@ -118,8 +126,8 @@ const AppLayout: React.FC = () => {
           <Route path="/watch-together" element={<WatchTogetherPage />} />
           <Route path="/watch-together/:code" element={<WatchTogetherPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
-          <Route path="/anime/:id" element={<AnimeDetailPage />} />
-          <Route path="/ani/:id" element={<AnimeDetailPage />} />
+          <Route path="/anime/:id" element={<AnimeOrWatchRoute />} />
+          <Route path="/ani/:id" element={<AnimeOrWatchRoute />} />
           <Route path="/anime/:id/:episode" element={<WatchPage />} />
           <Route path="/ani/:id/:episode" element={<WatchPage />} />
           <Route path="/settings" element={<SettingsPage />} />

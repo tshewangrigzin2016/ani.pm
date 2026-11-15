@@ -21,6 +21,7 @@ import {
   HOME_FEED,
   LATEST_EPISODES,
   SPOTLIGHT_ITEMS,
+  STILLS_POOL,
   findAnimeByParam,
   getDisplayTitle,
 } from '@/src/data/catalogService';
@@ -30,6 +31,11 @@ import { LibraryStatusTrigger } from '@/src/components/LibraryStatusTrigger';
 import { MediaCarousel } from '@/src/components/MediaCarousel';
 import { AvatarBadge, formatTimeSec } from '@/src/components/BrandMark';
 import { AniListMark, MyAnimeListMark } from '@/src/components/TrackerMarks';
+import {
+  buildTodaySchedule,
+  formatUpcomingCountdown,
+  sortUpcomingAnime,
+} from '@/src/utils/homeSchedule';
 
 const TIMEFRAMES: { key: TimeframeKey; labelKey: string }[] = [
   { key: 'today', labelKey: 'home.today' },
@@ -143,6 +149,16 @@ export const HomePage: React.FC = () => {
     }
     return base;
   }, [newFormat]);
+
+  const upcomingAnticipated = useMemo(
+    () => sortUpcomingAnime(HOME_FEED.upcoming).slice(0, 18),
+    []
+  );
+
+  const todaySchedule = useMemo(
+    () => buildTodaySchedule(CATALOG, LATEST_EPISODES, STILLS_POOL, 12),
+    []
+  );
 
   const commentsToShow = useMemo(() => {
     const base = [...(HOME_FEED.comments ?? [])];
@@ -269,7 +285,7 @@ export const HomePage: React.FC = () => {
               <p className="spot-syn">{activeSlide.synopsis}</p>
 
               <div className="actions">
-                <Link to={`/anime/${activeSlide.routeId}/1`} className="btn btn-play">
+                <Link to={`/anime/${activeSlide.routeId}?ep=1`} className="btn btn-play">
                   <Play size={18} fill="currentColor" />
                   <span>{t('home.play')}</span>
                 </Link>
@@ -371,7 +387,7 @@ export const HomePage: React.FC = () => {
               return (
                 <Link
                   key={`${item.routeId}-${item.episode}`}
-                  to={`/anime/${anime.routeId}/${item.episode}`}
+                  to={`/anime/${anime.routeId}?ep=${item.episode}`}
                   className="cw"
                   style={{ flex: '0 0 288px', width: 288 }}
                 >
@@ -641,6 +657,23 @@ export const HomePage: React.FC = () => {
           ))}
         </MediaCarousel>
 
+        {/* Most anticipated */}
+        {upcomingAnticipated.length > 0 && (
+          <MediaCarousel
+            title={<h2 className="row-h">Most anticipated</h2>}
+            viewAllTo="/anime?status=upcoming"
+          >
+            {upcomingAnticipated.map((anime) => (
+              <AnimeCard
+                key={`ant-${anime.routeId}`}
+                anime={anime}
+                variant="rail"
+                anticipatedBadge={formatUpcomingCountdown(anime)}
+              />
+            ))}
+          </MediaCarousel>
+        )}
+
         {/* Toonkotsu Manga Promo Banner */}
         <div className="app-content-frame">
           <Link to="/manga" className="tk-promo" aria-label="Read manga on Toonkotsu">
@@ -739,7 +772,7 @@ export const HomePage: React.FC = () => {
             {LATEST_EPISODES.slice(0, 12).map((ep) => (
               <Link
                 key={`${ep.routeId}-${ep.episode}`}
-                to={`/anime/${ep.routeId}/${ep.episode}`}
+                to={`/anime/${ep.routeId}?ep=${ep.episode}`}
                 className="cw"
               >
                 <div className="cw-thumb">
@@ -772,6 +805,62 @@ export const HomePage: React.FC = () => {
                     <div className="cw-title">{ep.title}</div>
                     <div className="cw-detail">
                       Episode {ep.episode} · {ep.timeAgo}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Today's Schedule */}
+        <section className="home-latest-feed">
+          <div className="row-head">
+            <h2 className="row-h">Today&apos;s Schedule</h2>
+            <Link to="/anime?status=airing" className="row-view-all">
+              <span>{t('home.viewAll')}</span>
+              <ChevronRight size={15} />
+            </Link>
+          </div>
+
+          <div className="latest-grid-4">
+            {todaySchedule.map((slot, idx) => (
+              <Link
+                key={`sched-${slot.anime.routeId}-${idx}`}
+                to={`/anime/${slot.anime.routeId}?ep=${slot.episode}`}
+                className="cw"
+              >
+                <div className="cw-thumb">
+                  {contentPrefs.showEpisodeThumbsOnHome && slot.thumbnail ? (
+                    <img src={slot.thumbnail} alt={slot.anime.title} loading="lazy" />
+                  ) : (
+                    <div className="cw-placeholder">
+                      <span className="cw-placeholder-number">
+                        {String(slot.episode).padStart(2, '0')}
+                      </span>
+                    </div>
+                  )}
+                  <div className="cw-shade" />
+                  <div className="cw-badges-tl">
+                    {slot.hasSub && (
+                      <span className="cw-badge">
+                        <Captions size={11} />
+                        <span>SUB</span>
+                      </span>
+                    )}
+                    {slot.hasDub && (
+                      <span className="cw-badge">
+                        <Mic size={11} />
+                        <span>DUB</span>
+                      </span>
+                    )}
+                  </div>
+                  <span className="cw-duration">{slot.timeLabel}</span>
+                  <div className="cw-inside">
+                    <div className="cw-title">{slot.anime.title}</div>
+                    <div className="cw-detail">
+                      Episode {slot.episode}
+                      {slot.totalEpisodes ? ` of ${slot.totalEpisodes}` : ''} · {slot.relativeLabel}
                     </div>
                   </div>
                 </div>

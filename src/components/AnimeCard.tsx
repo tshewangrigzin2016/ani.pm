@@ -6,12 +6,15 @@ import { useApp } from '@/src/context/AppContext';
 import { getDisplayTitle } from '@/src/data/catalogService';
 import { LibraryStatusTrigger } from './LibraryStatusTrigger';
 
+import type { UpcomingBadgeInfo } from '@/src/utils/homeSchedule';
+
 interface AnimeCardProps {
   anime: AnimeTitle;
   variant?: 'rail' | 'grid';
+  anticipatedBadge?: UpcomingBadgeInfo;
 }
 
-export const AnimeCard: React.FC<AnimeCardProps> = ({ anime, variant = 'rail' }) => {
+export const AnimeCard: React.FC<AnimeCardProps> = ({ anime, variant = 'rail', anticipatedBadge }) => {
   const { contentPrefs } = useApp();
   const title = getDisplayTitle(anime, contentPrefs.titleLanguage === 'original');
   const primaryGenre = anime.genres[0] ?? anime.type ?? 'Anime';
@@ -30,13 +33,19 @@ export const AnimeCard: React.FC<AnimeCardProps> = ({ anime, variant = 'rail' })
             decoding="async"
           />
           <div className={fadeClass} />
+          {anticipatedBadge && (
+            <div className="cov-anticipated">
+              <span className="cov-anticipated__date">{anticipatedBadge.dateLabel}</span>
+              <span className="cov-anticipated__countdown">{anticipatedBadge.countdownLabel}</span>
+            </div>
+          )}
           <div className="cov-cap">
             <span className="cov-title-clip">
               <span className="cov-title">{title}</span>
             </span>
             <div className="cov-meta">
               <span className="cov-genre">{primaryGenre}</span>
-              {(anime.subCount > 0 || anime.dubCount > 0) && (
+              {!anticipatedBadge && (anime.subCount > 0 || anime.dubCount > 0) && (
                 <span className="cov-language">
                   {anime.subCount > 0 && (
                     <span className="cov-language-pair" title={`${anime.subCount} Subbed`}>
@@ -56,7 +65,7 @@ export const AnimeCard: React.FC<AnimeCardProps> = ({ anime, variant = 'rail' })
                   )}
                 </span>
               )}
-              {anime.score !== null && anime.score > 0 && (
+              {!anticipatedBadge && anime.score !== null && anime.score > 0 && (
                 <span className="cov-score">
                   <Star size={10} />
                   <span>{anime.score.toFixed(1)}</span>

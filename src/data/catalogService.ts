@@ -61,6 +61,11 @@ function normalizeAnime(raw: Record<string, unknown>): AnimeTitle {
     providerTitles: Array.isArray(raw.providerTitles) ? (raw.providerTitles as string[]) : undefined,
     rank: typeof raw.rank === 'number' ? raw.rank : undefined,
     isAdult: Boolean(raw.isAdult),
+    airingAt: typeof raw.airingAt === 'number' ? raw.airingAt : null,
+    startDate:
+      raw.startDate && typeof raw.startDate === 'object'
+        ? (raw.startDate as { year?: number | null; month?: number | null; day?: number | null })
+        : null,
   };
 }
 
@@ -237,13 +242,20 @@ export const STILLS_POOL: string[] = Array.from(
 export function findAnimeByParam(idOrSlug: string | undefined): AnimeTitle | undefined {
   if (!idOrSlug) return CATALOG[0];
   const norm = decodeURIComponent(idOrSlug).trim().toLowerCase();
+  const pool: AnimeTitle[] = [
+    ...CATALOG,
+    ...SPOTLIGHT_ITEMS,
+    ...HOME_FEED.upcoming,
+    ...HOME_FEED.trending,
+    ...HOME_FEED.top,
+  ];
   return (
-    CATALOG.find((a) => a.routeId.toLowerCase() === norm) ??
-    CATALOG.find((a) => a.slug.toLowerCase() === norm) ??
-    CATALOG.find((a) => String(a.id) === norm) ??
-    CATALOG.find((a) => String(a.anilistId ?? '') === norm) ??
-    CATALOG.find((a) => String(a.malId ?? '') === norm) ??
-    CATALOG.find((a) => a.routeId.toLowerCase().includes(norm))
+    pool.find((a) => a.routeId.toLowerCase() === norm) ??
+    pool.find((a) => a.slug.toLowerCase() === norm) ??
+    pool.find((a) => String(a.id) === norm) ??
+    pool.find((a) => String(a.anilistId ?? '') === norm) ??
+    pool.find((a) => String(a.malId ?? '') === norm) ??
+    pool.find((a) => a.routeId.toLowerCase().includes(norm))
   );
 }
 

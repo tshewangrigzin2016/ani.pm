@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ArrowDownUp, Eye, EyeOff, Grid, List, Mic, Play, Search } from 'lucide-react';
+import { ArrowDownUp, BookOpen, ChevronDown, Eye, EyeOff, Grid, Layers, List, Mic, Play, Search } from 'lucide-react';
 import type { EpisodeItem } from '@/src/types/anime';
 import { filterEpisodeList } from '@/src/utils/catalogFilter';
 import { useApp } from '@/src/context/AppContext';
@@ -73,33 +73,41 @@ export const WatchPlaylistPanel: React.FC<WatchPlaylistPanelProps> = ({
 
   return (
     <aside className="watch-panel" aria-label="Episodes playlist">
-      <select
-        className="watch-panel__select"
-        value={selectedSeason}
-        onChange={(e) => setSelectedSeason(e.target.value)}
-        aria-label="Filter by season"
-      >
-        <option value="all">Season 1 · {episodes.length} eps</option>
-        {seasons.map((s) => (
-          <option key={s} value={String(s)}>
-            Season {s}
-          </option>
-        ))}
-      </select>
-
-      {arcs.length > 2 && (
+      <div className="watch-select-wrap">
+        <Layers size={14} className="watch-select-wrap__icon" />
         <select
-          className="watch-panel__select"
-          value={selectedArc}
-          onChange={(e) => setSelectedArc(e.target.value)}
-          aria-label="Filter by story arc"
+          className="watch-panel__select watch-panel__select--icon"
+          value={selectedSeason}
+          onChange={(e) => setSelectedSeason(e.target.value)}
+          aria-label="Filter by season"
         >
-          {arcs.map((arc) => (
-            <option key={arc} value={arc}>
-              {arc}
+          <option value="all">Season 1 · {episodes.length.toLocaleString()} eps</option>
+          {seasons.map((s) => (
+            <option key={s} value={String(s)}>
+              Season {s}
             </option>
           ))}
         </select>
+        <ChevronDown size={14} className="watch-select-wrap__chev" />
+      </div>
+
+      {arcs.length > 2 && (
+        <div className="watch-select-wrap">
+          <BookOpen size={14} className="watch-select-wrap__icon" />
+          <select
+            className="watch-panel__select watch-panel__select--icon"
+            value={selectedArc}
+            onChange={(e) => setSelectedArc(e.target.value)}
+            aria-label="Filter by story arc"
+          >
+            {arcs.map((arc) => (
+              <option key={arc} value={arc}>
+                {arc}
+              </option>
+            ))}
+          </select>
+          <ChevronDown size={14} className="watch-select-wrap__chev" />
+        </div>
       )}
 
       <div className="browse-search-pill" style={{ width: '100%', height: 36, borderRadius: 12 }}>

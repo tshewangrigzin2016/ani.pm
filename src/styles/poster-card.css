@@ -301,6 +301,40 @@
   color: #ffd35a;
 }
 
+.cov-anticipated {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  z-index: 3;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 5px 8px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(12, 14, 20, 0.74);
+  backdrop-filter: var(--glassfx-gate) saturate(150%) blur(10px);
+  -webkit-backdrop-filter: var(--glassfx-gate) saturate(150%) blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.cov-anticipated__date {
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.cov-anticipated__countdown {
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.72);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ==========================================================================
    Library Status Trigger (+) & Picker Menu
    ========================================================================== */

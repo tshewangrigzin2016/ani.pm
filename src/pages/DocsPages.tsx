@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Code2, Play, Search } from 'lucide-react';
+import { Code2, Mic, Play, Search, X } from 'lucide-react';
 import { CATALOG } from '@/src/data/catalogService';
 import { AnimeCard } from '@/src/components/AnimeCard';
 import { searchDescribeCatalog } from '@/src/utils/catalogFilter';
@@ -182,18 +182,96 @@ export const SearchPage: React.FC = () => {
   const [params, setParams] = useSearchParams();
   const initial = params.get('q') ?? '';
   const [q, setQ] = useState(initial);
+  const [mode, setMode] = useState<'titles' | 'describe'>('titles');
 
-  const matches = q.trim().length >= 2 ? searchDescribeCatalog(CATALOG, q) : CATALOG.slice(0, 24);
+  const matches = useMemo(() => {
+    const clean = q.trim().toLowerCase();
+    if (clean.length < 2) return [];
+    if (mode === 'describe') return searchDescribeCatalog(CATALOG, clean).slice(0, 36);
+    return CATALOG.filter((a) => {
+      const hay = [a.title, a.native ?? '', a.slug, ...a.genres, ...a.studios]
+        .join(' ')
+        .toLowerCase();
+      return hay.includes(clean);
+    }).slice(0, 36);
+  }, [q, mode]);
 
   return (
     <div className="page-shell">
-      <div className="page-header">
-        <div className="page-header__left">
-          <h1 className="page-title">Search</h1>
-          <span className="page-subtitle">{matches.length} results</span>
+      <div style={{ maxWidth: 1040, paddingTop: 28 }}>
+        <h1
+          style={{
+            margin: '0 0 18px',
+            fontSize: 'clamp(34px, 4.5vw, 52px)',
+            fontWeight: 650,
+            letterSpacing: '-0.03em',
+            lineHeight: 1.04,
+            color: '#ffffff',
+          }}
+        >
+          Search Ani.pm
+        </h1>
+
+        <div
+          style={{
+            display: 'inline-flex',
+            padding: 3,
+            borderRadius: 999,
+            border: '1px solid rgba(255,255,255,0.1)',
+            background: 'rgba(255,255,255,0.06)',
+            marginBottom: 18,
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setMode('titles')}
+            style={{
+              height: 30,
+              padding: '0 16px',
+              border: 0,
+              borderRadius: 999,
+              cursor: 'pointer',
+              fontSize: 13,
+              fontWeight: 600,
+              background: mode === 'titles' ? '#ffffff' : 'transparent',
+              color: mode === 'titles' ? '#09090b' : 'rgba(255,255,255,0.72)',
+            }}
+          >
+            Titles
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode('describe')}
+            style={{
+              height: 30,
+              padding: '0 16px',
+              border: 0,
+              borderRadius: 999,
+              cursor: 'pointer',
+              fontSize: 13,
+              fontWeight: 600,
+              background: mode === 'describe' ? '#ffffff' : 'transparent',
+              color: mode === 'describe' ? '#09090b' : 'rgba(255,255,255,0.72)',
+            }}
+          >
+            Describe it
+          </button>
         </div>
-        <div className="browse-search-pill" style={{ width: 320 }}>
-          <Search size={14} style={{ opacity: 0.6 }} />
+
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12,
+            width: 'min(520px, 100%)',
+            height: 48,
+            padding: '0 10px 0 16px',
+            borderRadius: 999,
+            border: '1px solid rgba(255,255,255,0.12)',
+            background: 'rgba(255,255,255,0.06)',
+          }}
+        >
+          <Search size={17} style={{ opacity: 0.7, flexShrink: 0 }} />
           <input
             type="text"
             value={q}
@@ -201,15 +279,69 @@ export const SearchPage: React.FC = () => {
               setQ(e.target.value);
               setParams(e.target.value ? { q: e.target.value } : new URLSearchParams(), { replace: true });
             }}
-            placeholder="Search anime..."
+            placeholder={
+              mode === 'describe'
+                ? 'Describe a plot, vibe, or character...'
+                : 'Search anime...'
+            }
+            style={{
+              flex: '1 1 auto',
+              minWidth: 0,
+              border: 0,
+              background: 'transparent',
+              color: '#ffffff',
+              fontSize: 15,
+              outline: 'none',
+            }}
           />
+          {q && (
+            <button
+              type="button"
+              className="yt-icon-button"
+              aria-label="Clear search query"
+              onClick={() => {
+                setQ('');
+                setParams(new URLSearchParams(), { replace: true });
+              }}
+            >
+              <X size={16} />
+            </button>
+          )}
+          <button
+            type="button"
+            className="yt-icon-button"
+            aria-label="Voice search"
+            onClick={() => {
+              setQ('One Piece');
+              setParams({ q: 'One Piece' }, { replace: true });
+            }}
+          >
+            <Mic size={17} />
+          </button>
         </div>
-      </div>
 
-      <div className="browse-grid">
-        {matches.map((a) => (
-          <AnimeCard key={a.routeId} anime={a} variant="grid" />
-        ))}
+        <p style={{ marginTop: 12, fontSize: 13, color: 'rgba(255,255,255,0.58)' }}>
+          {mode === 'describe'
+            ? 'Describe the plot, scene, aesthetic, or studio you have in mind.'
+            : 'Type at least two characters to search.'}
+        </p>
+
+        {q.trim().length >= 2 && (
+          <div style={{ marginTop: 24 }}>
+            <p style={{ margin: '0 0 14px', fontSize: 13, color: 'rgba(255,255,255,0.65)' }}>
+              {matches.length > 0
+                ? `${matches.length} matching titles`
+                : `No titles matched "${q}"`}
+            </p>
+            {matches.length > 0 && (
+              <div className="browse-grid">
+                {matches.map((a) => (
+                  <AnimeCard key={a.routeId} anime={a} variant="grid" />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

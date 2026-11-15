@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import {
   Captions,
   ChevronLeft,
   ChevronRight,
   Flag,
+  Info,
   Lightbulb,
   Maximize2,
   Mic,
@@ -29,13 +30,13 @@ import {
 } from '@/src/utils/watchRelations';
 import { GlassPlayer } from '@/src/components/GlassPlayer';
 import { WatchPlaylistPanel } from '@/src/components/WatchPlaylistPanel';
-import { LibraryStatusTrigger } from '@/src/components/LibraryStatusTrigger';
 import { WatchAnimeMeta } from '@/src/components/WatchAnimeMeta';
 import { WatchCommentsSection } from '@/src/components/WatchCommentsSection';
 import { WatchSidebarExtras } from '@/src/components/WatchSidebarExtras';
 
 export const WatchPage: React.FC = () => {
-  const { id, episode: epParam } = useParams<{ id: string; episode: string }>();
+  const { id, episode: epParam } = useParams<{ id: string; episode?: string }>();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const {
@@ -48,7 +49,8 @@ export const WatchPage: React.FC = () => {
 
   const anime = useMemo(() => findAnimeByParam(id) ?? CATALOG[0], [id]);
   const episodes = useMemo(() => buildEpisodesForAnime(anime, STILLS_POOL), [anime]);
-  const epNum = Math.max(1, Number.parseInt(epParam ?? '1', 10) || 1);
+  const rawEp = epParam ?? searchParams.get('ep') ?? '1';
+  const epNum = Math.max(1, Number.parseInt(rawEp, 10) || 1);
   const currentEpisode = useMemo(
     () => episodes.find((e) => e.number === epNum) ?? episodes[0],
     [episodes, epNum]
@@ -57,7 +59,6 @@ export const WatchPage: React.FC = () => {
   const [audioMode, setAudioMode] = useState<'sub' | 'dub'>(
     anime.dubCount >= epNum && playerPrefs.preferredAudio === 'dub' ? 'dub' : 'sub'
   );
-  const [subMode, setSubMode] = useState<'soft' | 'hard'>('soft');
   const [server, setServer] = useState<'default' | 'beta'>(playerPrefs.defaultServer);
   const [backupNoticeDismissed, setBackupNoticeDismissed] = useState(false);
   const [sizePopover, setSizePopover] = useState(false);
@@ -80,7 +81,7 @@ export const WatchPage: React.FC = () => {
   }, [audioMode, currentEpisode]);
 
   const goToEpisode = (n: number) => {
-    navigate(`/anime/${anime.routeId}/${n}`);
+    navigate(`/anime/${anime.routeId}?ep=${n}`);
   };
 
   const hasPrev = currentEpisode.number > 1;
@@ -95,17 +96,6 @@ export const WatchPage: React.FC = () => {
           onClick={() => setPlayerPrefs((p) => ({ ...p, lightsOff: false }))}
         />
       )}
-
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'rgb(var(--c-text2))' }}>
-          <Link to={`/anime/${anime.routeId}`} className="watch-pill">
-            <ChevronLeft size={14} />
-            <span>{anime.title}</span>
-          </Link>
-          <span>Episode {currentEpisode.number}</span>
-        </div>
-        <LibraryStatusTrigger routeId={anime.routeId} variant="inline" />
-      </div>
 
       <div className={`watch-grid ${playerPrefs.theaterMode ? 'is-theater' : ''}`}>
         <div>
@@ -174,7 +164,7 @@ export const WatchPage: React.FC = () => {
                   onClick={() => setSizePopover((p) => !p)}
                 >
                   <Sliders size={13} />
-                  <span>{t('watch.playerSize')} ({playerPrefs.playerSize}%)</span>
+                  <span>{t('watch.playerSize')}</span>
                 </button>
                 {sizePopover && (
                   <div
@@ -214,25 +204,25 @@ export const WatchPage: React.FC = () => {
             <div className="watch-toolbar__pills">
               <button
                 type="button"
-                className="watch-pill"
+                className="watch-pill watch-pill--icon"
                 disabled={!hasPrev}
                 aria-label="Previous episode"
+                title="Previous episode"
                 onClick={() => hasPrev && goToEpisode(currentEpisode.number - 1)}
                 style={{ opacity: hasPrev ? 1 : 0.4 }}
               >
-                <ChevronLeft size={14} />
-                <span className="player-dock__full">Previous episode</span>
+                <ChevronLeft size={16} />
               </button>
               <button
                 type="button"
-                className="watch-pill"
+                className="watch-pill watch-pill--icon"
                 disabled={!hasNext}
                 aria-label="Next episode"
+                title="Next episode"
                 onClick={() => hasNext && goToEpisode(currentEpisode.number + 1)}
                 style={{ opacity: hasNext ? 1 : 0.4 }}
               >
-                <ChevronRight size={14} />
-                <span className="player-dock__full">Next episode</span>
+                <ChevronRight size={16} />
               </button>
             </div>
           </div>
@@ -277,16 +267,16 @@ export const WatchPage: React.FC = () => {
           {/* Server Notice Banner */}
           {!backupNoticeDismissed && (
             <div className="watch-server-notice">
-              <span>
-                Tip: If playback buffers or subtitles desync, switch between <strong>Backup server</strong> and{' '}
-                <strong>Beta server</strong> (multi-audio + 50 subtitle tracks).
+              <Info size={16} style={{ flexShrink: 0, opacity: 0.78 }} />
+              <span style={{ flex: 1 }}>
+                Subtitle or audio issues, lag or buffering? Switch servers: the Beta server is recommended, and the Backup server lets you switch location.
               </span>
               <button
                 type="button"
                 className="yt-icon-button"
                 aria-label="Dismiss tip"
                 onClick={() => setBackupNoticeDismissed(true)}
-                style={{ width: 26, height: 26 }}
+                style={{ width: 26, height: 26, flexShrink: 0 }}
               >
                 <X size={14} />
               </button>
@@ -314,26 +304,11 @@ export const WatchPage: React.FC = () => {
                 <Mic size={13} />
                 <span>DUB</span>
               </button>
-              <span className="watch-audio-switch__sep" aria-hidden="true" />
-              <button
-                type="button"
-                aria-pressed={subMode === 'soft'}
-                onClick={() => setSubMode('soft')}
-              >
-                <span>SOFT</span>
-              </button>
-              <button
-                type="button"
-                aria-pressed={subMode === 'hard'}
-                onClick={() => setSubMode('hard')}
-              >
-                <span>HARD</span>
-              </button>
             </div>
 
             <button
               type="button"
-              className="watch-pill"
+              className={`watch-pill ${server === 'default' ? 'is-server-active' : ''}`}
               onClick={() => {
                 setServer('default');
                 showToast('Switched to Backup server');
@@ -345,7 +320,7 @@ export const WatchPage: React.FC = () => {
 
             <button
               type="button"
-              className="watch-pill"
+              className={`watch-pill ${server === 'beta' ? 'is-server-active' : ''}`}
               onClick={() => {
                 setServer('beta');
                 showToast('Switched to Beta server');
@@ -370,7 +345,6 @@ export const WatchPage: React.FC = () => {
             <button
               type="button"
               className="watch-pill"
-              style={{ marginInlineStart: 'auto' }}
               onClick={() => setReportOpen(true)}
             >
               <Flag size={13} />
